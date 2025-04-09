@@ -1,4 +1,9 @@
+#ifndef LIST_H
+#define LIST_H
+
 #include "nodelist.h"
+#include <iostream>
+using namespace std;
 
 template<class T>
 class List{
@@ -11,7 +16,13 @@ class List{
         bool remove(T);
         bool isEmpty();
         void print();
+        Node<T>* getHead();
 };
+
+template <class T>
+Node<T>* List<T>::getHead() {
+    return head;
+}
 
 template<class T>
 List<T>::List(Node<T>* node){
@@ -65,8 +76,7 @@ bool List<T>::remove(T data){
 
    Node<T>* prev=nullptr;
 
-   
-   while (NodeToDelete!=nullptr && NodeToDelete->getData()!=data)
+   while (NodeToDelete != nullptr && !(NodeToDelete->getData() == data))
    {
       prev=NodeToDelete;
       NodeToDelete=NodeToDelete->getNext();
@@ -80,7 +90,6 @@ bool List<T>::remove(T data){
          prev->setNext(NodeToDelete->getNext());
       }
 
-
       delete NodeToDelete;
       return true;
    }
@@ -92,10 +101,11 @@ template<class T>
 void List<T>::print(){
     Node<T>* actual = head;
     cout<<head<<endl;
-    while (actual != nullptr)
-    {
+    while (actual != nullptr){
        actual->print();
        actual = actual->getNext();
     }
     
 }
+
+#endif

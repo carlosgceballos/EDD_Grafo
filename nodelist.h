@@ -33,17 +33,6 @@ Node<T>::Node(T data): data(data), next(nullptr){
 }
 
 template<class T>
-Node<T>::Node(T data, Node<T>* next){
-    this->data = data;
-    this->next = next;
-}
-
-template<class T>
-Node<T>::Node(T data){
-  this->data=data;
-}
-
-template<class T>
 Node<T>::~Node(){
     this->next = nullptr;
 }
